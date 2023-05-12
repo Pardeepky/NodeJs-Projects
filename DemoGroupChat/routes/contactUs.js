@@ -1,14 +1,10 @@
 const express = require('express')
-const path = require('path');
-const rootDir = require('../util/path');
 const router = express.Router()
 
-router.get('/contactUs', (req, res, next) => {
-    res.sendFile(path.join(rootDir, 'views', 'contactUs.html'))
-})
+const productController = require('../controllers/contactUs');
 
-router.post('/contactUs', (req, res, next) => {
-    res.redirect('/success')
-})
+router.get('/contactUs', productController.getContact);
+
+router.post('/contactUs', productController.postContact);
 
 module.exports = router
