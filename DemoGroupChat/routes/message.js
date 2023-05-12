@@ -1,5 +1,7 @@
 const express = require('express')
+const path = require('path');
 const fs = require("fs");
+const rootDir = require('../util/path');
 const router = express.Router()
 
 router.get("/", (req, res) => {
@@ -8,13 +10,7 @@ router.get("/", (req, res) => {
             console.log(err);
             data = "No chat exist";
         }
-        res.send(
-            `${data}<form action="/" method="POST" onSubmit="document.getElementById('username').value = localStorage.getItem('username')">
-                <input type="text" name="message" id="message">
-                <input type="hidden" name="username" id="username">
-                <br />
-                <button type="submit">Send</button>
-            </form>`)
+        res.sendFile(path.join(rootDir, 'views', 'message.html'))
     });
 });
 router.post("/", (req, res) => {
