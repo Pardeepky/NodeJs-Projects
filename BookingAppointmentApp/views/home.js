@@ -17,7 +17,7 @@ async function onsignup(event) {
                 myObj
             );
             console.log(response);
-            event.target.reset(); // Reset the form after the submission
+            event.target.reset();
             onScreenFunction(response.data);
         } catch (error) {
             console.error(error);
@@ -35,18 +35,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error(err);
     }
 });
-async function onScreenFunction(upprWala) {
+async function onScreenFunction(data) {
     const ul = document.getElementById("listOnScreen");
 
     const li = document.createElement("li");
-    li.innerHTML = `Name:${upprWala.name}   Phone:${upprWala.phone}   Email:${upprWala.email}`;
+    li.innerHTML = `Name:${data.name}   Phone:${data.phone}   Email:${data.email}`;
 
     const delBtn = document.createElement("input");
     delBtn.value = "Delete";
     delBtn.type = "button";
     delBtn.onclick = async () => {
         try {
-            await axios.delete(`http://localhost:3000/deleteAppointment/${upprWala.id}`);
+            await axios.delete(`http://localhost:3000/deleteAppointment/${data.id}`);
             ul.removeChild(li);
         } catch (err) {
             console.error(err);
@@ -57,14 +57,14 @@ async function onScreenFunction(upprWala) {
     editBtn.type = "button";
     editBtn.onclick = async () => {
         try {
-            await axios.delete(`http://localhost:3000/deleteAppointment/${upprWala.id}`);
+            await axios.delete(`http://localhost:3000/deleteAppointment/${data.id}`);
             ul.removeChild(li);
         } catch (err) {
             console.error(err);
         }
-        document.getElementById("Name").value = upprWala.name;
-        document.getElementById("Phone").value = upprWala.phone;
-        document.getElementById("Email").value = upprWala.email;
+        document.getElementById("Name").value = data.name;
+        document.getElementById("Phone").value = data.phone;
+        document.getElementById("Email").value = data.email;
     };
     li.appendChild(editBtn);
     li.appendChild(delBtn);
