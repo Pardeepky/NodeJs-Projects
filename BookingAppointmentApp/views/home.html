@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Booking Appointment App</title>
+</head>
+
+<body>
+    <div class="container mx-auto my-4">
+        <h1 class="text-center text-2xl font-bold">Book an Appointment</h1>
+        <form onSubmit="handleSubmit(e)">
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-medium">Name</label>
+                <input type="text" name="name" id="name" class="form-control w-full">
+            </div>
+            <div class="mb-4">
+                <label for="phone" class="block text-sm font-medium">Phone Number</label>
+                <input type="text" name="phone" id="phone" class="form-control w-full">
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-medium">Email</label>
+                <input type="email" name="email" id="email" class="form-control w-full">
+            </div>
+            <button type="submit" class="btn btn-primary">Book Appointment</button>
+        </form>
+        <ul id="listOnScreen"></ul>
+    </div>
+    <style>
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+        }
+
+        form {
+            margin-top: 2rem;
+        }
+
+        input {
+            border: 1px solid #ccc;
+            padding: .5rem;
+            width: 100%;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            font-size: 1rem;
+            padding: .5rem 1rem;
+        }
+    </style>
+    <script src="home.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+</body>
+
+</html>
